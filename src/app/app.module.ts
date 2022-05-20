@@ -7,16 +7,25 @@ import { AuthModule } from './auth/auth.module';
 import { AuthGuard } from './auth/guard/auth-guard';
 import { AuthService } from './auth/services/auth.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { AlertsComponent } from './shared/alerts/alerts.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { GeneralTableComponent } from './components/general-table/general-table.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AlertsComponent,
+    GeneralTableComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
 		AuthModule,
-  BrowserAnimationsModule
+    BrowserAnimationsModule,
+		AuthModule,
+		AlertModule.forRoot(),
+		ModalModule.forRoot() 
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
