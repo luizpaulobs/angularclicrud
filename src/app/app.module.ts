@@ -11,12 +11,20 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 import { AlertsComponent } from './shared/alerts/alerts.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { GeneralTableComponent } from './components/general-table/general-table.component';
+import { LayoutComponent } from './components/layout/layout.component';
+import { HeaderComponent } from './components/layout/header/header.component';
+import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
+import { FooterComponent } from './components/layout/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AlertsComponent,
-    GeneralTableComponent
+    GeneralTableComponent,
+    LayoutComponent,
+    HeaderComponent,
+    SidebarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +33,7 @@ import { GeneralTableComponent } from './components/general-table/general-table.
     BrowserAnimationsModule,
 		AuthModule,
 		AlertModule.forRoot(),
-		ModalModule.forRoot() 
+		ModalModule.forRoot(),
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
