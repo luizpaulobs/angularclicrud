@@ -8,7 +8,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-	public title = 'Título';
+	public title = 'Contas';
 
   constructor() { }
 

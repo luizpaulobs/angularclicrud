@@ -15,6 +15,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { FooterComponent } from './components/layout/footer/footer.component';
 		AuthModule,
 		AlertModule.forRoot(),
 		ModalModule.forRoot(),
+		NgxDatatableModule 
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

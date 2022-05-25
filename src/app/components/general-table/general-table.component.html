@@ -1,1 +1,30 @@
-<p>general-table works!</p>
+<div class="container">
+	<div class="card" style="margin: 20px; justify-content: center;">
+		<ngx-datatable [rows]="row" class="material">
+	
+			<ngx-datatable-column name="id" [width]="250">
+				<ng-template let-value="value" ngx-datatable-cell-template>
+					<strong>{{ value }}</strong>
+				</ng-template>
+			</ngx-datatable-column>
+	
+			<ngx-datatable-column name="name" [width]="250">
+				<ng-template let-value="value" ngx-datatable-cell-template>
+					<strong>{{ value }}</strong>
+				</ng-template>
+			</ngx-datatable-column>
+	
+			<ngx-datatable-column name="us" [width]="250">
+				<ng-template let-value="value" ngx-datatable-cell-template>
+					<strong>{{ value }}</strong>
+				</ng-template>
+			</ngx-datatable-column>
+	
+			<ngx-datatable-column name="valor" [width]="250">
+				<ng-template let-value="value" ngx-datatable-cell-template>
+					<strong>{{ value }}</strong>
+				</ng-template>
+			</ngx-datatable-column>
+		</ngx-datatable>
+	</div>
+</div>

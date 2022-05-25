@@ -8,6 +8,17 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class GeneralTableComponent implements OnInit {
 
+	row = [
+		{id: '1', name: 'Teste', us: 'ES', valor: 1524.42},
+		{id: '1', name: 'Teste', us: 'ES', valor: 1524.42},
+		{id: '1', name: 'Teste', us: 'ES', valor: 1524.42},
+		{id: '1', name: 'Teste', us: 'ES', valor: 1524.42},
+		{id: '1', name: 'Teste', us: 'ES', valor: 1524.42},
+		{id: '1', name: 'Teste', us: 'ES', valor: 1524.42},
+		{id: '1', name: 'Teste', us: 'ES', valor: 1524.42},
+		{id: '1', name: 'Teste', us: 'ES', valor: 1524.42}
+	]
+
   constructor() { }
 
   ngOnInit(): void {
