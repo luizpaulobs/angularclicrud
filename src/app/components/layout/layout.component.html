@@ -1,14 +1,18 @@
-<section class="row">
-	<div class="side">
-		<app-sidebar></app-sidebar>
-	</div>
-
-	<div class="p-0 header">
-		<app-header></app-header>
+<section>
+	<div class="row">
+		<div class="row">
+			<div class="col side">
+				<app-sidebar></app-sidebar>
+			</div>
 		
-		<router-outlet></router-outlet>
+			<div class="col p-0 header">
+				<app-header></app-header>
+				
+				<router-outlet></router-outlet>
+			</div>
+		</div>
+		
+		
+		<app-footer></app-footer>
 	</div>
-	
-	
-	<app-footer></app-footer>
 </section>

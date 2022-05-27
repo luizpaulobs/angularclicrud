@@ -16,6 +16,7 @@ import { HeaderComponent } from './components/layout/header/header.component';
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { GeneralTableService } from './shared/services/general-table.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 		ModalModule.forRoot(),
 		NgxDatatableModule 
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, GeneralTableService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
