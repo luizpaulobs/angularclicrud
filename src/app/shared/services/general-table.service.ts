@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 
 @Injectable({
 	providedIn: 'root'
@@ -18,7 +19,7 @@ export class GeneralTableService {
 
 	constructor() {}
 
-	getGeneralTable(): Array<any> { 
-		return this.row
+	getGeneralTable(): Observable<any> {  
+		return new Observable(Subscriber => Subscriber.next(this.row))
 	}
 }

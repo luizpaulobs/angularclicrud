@@ -14,7 +14,7 @@ export class GeneralTableComponent implements OnInit {
   constructor(private generalTableService: GeneralTableService) { }
 
   ngOnInit(): void {
-		this.data = this.generalTableService.getGeneralTable()
+		this.generalTableService.getGeneralTable().subscribe(res => this.data = res)
   }
 
 }
