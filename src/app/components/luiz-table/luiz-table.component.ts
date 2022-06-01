@@ -8,7 +8,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class LuizTableComponent implements OnInit {
 
-	public data = [];
+	public data = [{id: '1', name: 'Teste', origem: 'Salário', valor: 1524.42},];
 
   constructor() { }
 
