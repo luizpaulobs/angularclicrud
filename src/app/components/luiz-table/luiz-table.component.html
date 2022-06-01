@@ -1,35 +1,51 @@
 <div class="container">
 	<div class="card" style="margin: 20px; justify-content: center; padding: 20px;">
-		<h4>Tabela Luiz</h4>
+		<div class="d-flex">
+			<h4>Tabela Luiz</h4>
+			<button class="btn btn-primary ms-auto" (click)="openForm()">Adicionar</button>
+		</div>
 		<hr>
-		
-		<ngx-datatable [rows]="data" class="material" [scrollbarH]="true" columnMode="force" >
-	
+
+		<ngx-datatable [rows]="data" class="material" [scrollbarH]="true" columnMode="force">
+
 			<ngx-datatable-column name="id">
 				<ng-template let-column="column" ngx-datatable-header-template>Id</ng-template>
 				<ng-template let-value="value" ngx-datatable-cell-template>
 					<strong>{{ value }}</strong>
 				</ng-template>
 			</ngx-datatable-column>
-	
+
 			<ngx-datatable-column name="name">
 				<ng-template let-column="column" ngx-datatable-header-template>Nome</ng-template>
 				<ng-template let-value="value" ngx-datatable-cell-template>
 					<strong>{{ value }}</strong>
 				</ng-template>
 			</ngx-datatable-column>
-	
+
 			<ngx-datatable-column name="origem">
 				<ng-template let-column="column" ngx-datatable-header-template>Origem</ng-template>
 				<ng-template let-value="value" ngx-datatable-cell-template>
 					<strong>{{ value }}</strong>
 				</ng-template>
 			</ngx-datatable-column>
-	
+
 			<ngx-datatable-column name="valor">
 				<ng-template let-column="column" ngx-datatable-header-template>Valor</ng-template>
 				<ng-template let-value="value" ngx-datatable-cell-template>
 					<strong>{{ value }}</strong>
+				</ng-template>
+			</ngx-datatable-column>
+
+			<ngx-datatable-column name="actions">
+				<ng-template let-column="column" ngx-datatable-header-template>Ações</ng-template>
+				<ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+					<button type="button" class="btn" data-bs-toggle="tooltip" title="Editar" (click)="openEdit(row)">
+						<i class="ri-edit-2-fill text-warning"></i>
+					</button>
+
+					<button type="button" class="btn" data-bs-toggle="tooltip" title="Deletar" (click)="openEdit(row)">
+						<i class="ri-delete-bin-5-fill text-danger"></i>
+					</button>
 				</ng-template>
 			</ngx-datatable-column>
 		</ngx-datatable>
