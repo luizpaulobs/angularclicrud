@@ -17,6 +17,8 @@ import { SidebarComponent } from './components/layout/sidebar/sidebar.component'
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { GeneralTableService } from './shared/services/general-table.service';
+import { LuizTableComponent } from './components/luiz-table/luiz-table.component';
+import { RobTableComponent } from './components/rob-table/rob-table.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { GeneralTableService } from './shared/services/general-table.service';
     LayoutComponent,
     HeaderComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    LuizTableComponent,
+    RobTableComponent
   ],
   imports: [
     BrowserModule,
