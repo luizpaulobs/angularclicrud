@@ -42,7 +42,7 @@ import { FormComponent } from './components/luiz-table/form/form.component';
 		AuthModule,
 		AlertModule.forRoot(),
 		ModalModule.forRoot(),
-		NgxDatatableModule 
+		NgxDatatableModule,
   ],
   providers: [AuthService, AuthGuard, GeneralTableService],
   bootstrap: [AppComponent]

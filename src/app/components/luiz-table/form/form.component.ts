@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, Inject } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-form',
@@ -9,10 +10,17 @@ import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core
 export class FormComponent implements OnInit {
 
 	@Input() title = "Novo";
+	@Input() data = {};
 
-  constructor() { }
+  constructor(private modalRef: BsModalRef) { }
 
   ngOnInit(): void {
+		console.log(this.data);
+		
   }
+
+	closeModal() {
+		this.modalRef.hide();
+	}
 
 }

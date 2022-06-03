@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { FormComponent } from './form/form.component';
 
 @Component({
@@ -11,6 +11,8 @@ import { FormComponent } from './form/form.component';
 export class LuizTableComponent implements OnInit {
 
 	public data = [{ id: '1', name: 'Teste', origem: 'Salário', valor: 1524.42 },];
+	
+	public modalRef: BsModalRef;
 
 	constructor(private modalService: BsModalService) { }
 
@@ -18,11 +20,15 @@ export class LuizTableComponent implements OnInit {
 	}
 
 	openForm() {
-		this.modalService.show(FormComponent)
+		this.modalRef = this.modalService.show(FormComponent, { ignoreBackdropClick: true });
 	}
 
 	openEdit(row: any) {
-		console.log(row);
+		const initialState = {
+			data: row
+		}
+		
+		this.modalRef = this.modalService.show(FormComponent, { ignoreBackdropClick: true, initialState: initialState });
 	}
 
 	delete(row: any) {
