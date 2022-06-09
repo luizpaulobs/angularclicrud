@@ -8,8 +8,6 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class RobTableComponent implements OnInit {
 
-	public data = [];
-
   constructor() { }
 
   ngOnInit(): void {

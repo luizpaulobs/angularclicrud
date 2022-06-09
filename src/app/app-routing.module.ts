@@ -12,12 +12,12 @@ const routes: Routes = [
 	{
 		path: '', 
 		component: LayoutComponent, 
-		canActivate: [AuthGuard],
+		// canActivate: [AuthGuard],
 		children: [
 			{path: '', redirectTo: '/', pathMatch: 'full'},
 			{path: '', component: GeneralTableComponent},
-			{path: 'luiz', component: LuizTableComponent},
-			{path: 'rob', component: RobTableComponent}
+			{path: 'cursos', component: LuizTableComponent},
+			{path: 'inscricao', component: RobTableComponent}
 		]
 	}
 ];

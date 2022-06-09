@@ -1,38 +1,30 @@
 <div class="container">
 	<div class="card" style="margin: 20px; justify-content: center; padding: 20px;">
-		<h4>Tabela Rob</h4>
+		<h4>Incrição</h4>
 		<hr>
-		
-		<ngx-datatable [rows]="data" class="material" [scrollbarH]="true" columnMode="force" >
-	
-			<ngx-datatable-column name="id">
-				<ng-template let-column="column" ngx-datatable-header-template>Id</ng-template>
-				<ng-template let-value="value" ngx-datatable-cell-template>
-					<strong>{{ value }}</strong>
-				</ng-template>
-			</ngx-datatable-column>
-	
-			<ngx-datatable-column name="name">
-				<ng-template let-column="column" ngx-datatable-header-template>Nome</ng-template>
-				<ng-template let-value="value" ngx-datatable-cell-template>
-					<strong>{{ value }}</strong>
-				</ng-template>
-			</ngx-datatable-column>
-	
-			<ngx-datatable-column name="origem">
-				<ng-template let-column="column" ngx-datatable-header-template>Origem</ng-template>
-				<ng-template let-value="value" ngx-datatable-cell-template>
-					<strong>{{ value }}</strong>
-				</ng-template>
-			</ngx-datatable-column>
-	
-			<ngx-datatable-column name="valor">
-				<ng-template let-column="column" ngx-datatable-header-template>Valor</ng-template>
-				<ng-template let-value="value" ngx-datatable-cell-template>
-					<strong>{{ value }}</strong>
-				</ng-template>
-			</ngx-datatable-column>
-		</ngx-datatable>
+		<form>
+			<div class="form-group mb-4">
+				<label>Nome</label>
+				<input type="text" class="form-control" placeholder="Nome Completo">
+			</div>
+
+			<div class="form-group mb-4">
+				<label>Email</label>
+				<input type="email" class="form-control" placeholder="Email">
+			</div>
+
+			<div class="form-group mb-4">
+				<label >Telefone</label>
+				<input type="number" class="form-control"  placeholder="Telefone">
+			</div>
+
+			<div class="form-group mb-4">
+				<label >Curso</label>
+				<input type="text" class="form-control"  placeholder="Curso">
+			</div>
+
+			<button type="submit" class="btn btn-primary mx-0 d-flex">Submit</button>
+		</form>
+
 	</div>
 </div>
-

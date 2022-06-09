@@ -19,7 +19,6 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { GeneralTableService } from './shared/services/general-table.service';
 import { LuizTableComponent } from './components/luiz-table/luiz-table.component';
 import { RobTableComponent } from './components/rob-table/rob-table.component';
-import { FormComponent } from './components/luiz-table/form/form.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +31,6 @@ import { FormComponent } from './components/luiz-table/form/form.component';
     FooterComponent,
     LuizTableComponent,
     RobTableComponent,
-    FormComponent
   ],
   imports: [
     BrowserModule,

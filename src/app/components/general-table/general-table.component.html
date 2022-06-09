@@ -1,35 +1,35 @@
 <div class="container">
 	<div class="card" style="margin: 20px; justify-content: center; padding: 20px;">
-		<h4>Tabela Faesa</h4>
+		<h4>Cursos Disponíveis</h4>
 		<hr>
 		
-		<ngx-datatable [rows]="data" class="material" [scrollbarH]="true" columnMode="force" >
+		<ngx-datatable [rows]="data" class="material" [scrollbarH]="true" >
 	
-			<ngx-datatable-column name="id">
+			<ngx-datatable-column name="id" [width]="50">
 				<ng-template let-column="column" ngx-datatable-header-template>Id</ng-template>
 				<ng-template let-value="value" ngx-datatable-cell-template>
 					<strong>{{ value }}</strong>
 				</ng-template>
 			</ngx-datatable-column>
 	
-			<ngx-datatable-column name="name">
-				<ng-template let-column="column" ngx-datatable-header-template>Nome</ng-template>
+			<ngx-datatable-column name="name" [width]="400">
+				<ng-template let-column="column" ngx-datatable-header-template>Curso</ng-template>
 				<ng-template let-value="value" ngx-datatable-cell-template>
 					<strong>{{ value }}</strong>
 				</ng-template>
 			</ngx-datatable-column>
 	
-			<ngx-datatable-column name="origem">
-				<ng-template let-column="column" ngx-datatable-header-template>Origem</ng-template>
+			<ngx-datatable-column name="tipo" [width]="250">
+				<ng-template let-column="column" ngx-datatable-header-template>Tipo</ng-template>
 				<ng-template let-value="value" ngx-datatable-cell-template>
 					<strong>{{ value }}</strong>
 				</ng-template>
 			</ngx-datatable-column>
 	
-			<ngx-datatable-column name="valor">
-				<ng-template let-column="column" ngx-datatable-header-template>Valor</ng-template>
+			<ngx-datatable-column name="valor" [width]="100">
+				<ng-template let-column="column" ngx-datatable-header-template>Valor Mensal</ng-template>
 				<ng-template let-value="value" ngx-datatable-cell-template>
-					<strong>{{ value }}</strong>
+					<strong>{{ formatar(value) }}</strong>
 				</ng-template>
 			</ngx-datatable-column>
 		</ngx-datatable>

@@ -17,4 +17,8 @@ export class GeneralTableComponent implements OnInit {
 		this.generalTableService.getGeneralTable().subscribe(res => this.data = res)
   }
 
+  formatar(value: number): string {
+    return `R$ ${value.toString().replace(".", ",")}`;
+  }
+
 }

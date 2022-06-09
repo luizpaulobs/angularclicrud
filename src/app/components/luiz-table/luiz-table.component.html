@@ -1,53 +1,14 @@
 <div class="container">
-	<div class="card" style="margin: 20px; justify-content: center; padding: 20px;">
-		<div class="d-flex">
-			<h4>Tabela Luiz</h4>
-			<button class="btn btn-primary ms-auto" (click)="openForm()">Adicionar</button>
-		</div>
-		<hr>
-
-		<ngx-datatable [rows]="data" class="material" [scrollbarH]="true" columnMode="force">
-
-			<ngx-datatable-column name="id">
-				<ng-template let-column="column" ngx-datatable-header-template>Id</ng-template>
-				<ng-template let-value="value" ngx-datatable-cell-template>
-					<strong>{{ value }}</strong>
-				</ng-template>
-			</ngx-datatable-column>
-
-			<ngx-datatable-column name="name">
-				<ng-template let-column="column" ngx-datatable-header-template>Nome</ng-template>
-				<ng-template let-value="value" ngx-datatable-cell-template>
-					<strong>{{ value }}</strong>
-				</ng-template>
-			</ngx-datatable-column>
-
-			<ngx-datatable-column name="origem">
-				<ng-template let-column="column" ngx-datatable-header-template>Origem</ng-template>
-				<ng-template let-value="value" ngx-datatable-cell-template>
-					<strong>{{ value }}</strong>
-				</ng-template>
-			</ngx-datatable-column>
-
-			<ngx-datatable-column name="valor">
-				<ng-template let-column="column" ngx-datatable-header-template>Valor</ng-template>
-				<ng-template let-value="value" ngx-datatable-cell-template>
-					<strong>{{ value }}</strong>
-				</ng-template>
-			</ngx-datatable-column>
-
-			<ngx-datatable-column name="actions">
-				<ng-template let-column="column" ngx-datatable-header-template>Ações</ng-template>
-				<ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-					<button type="button" class="btn" data-bs-toggle="tooltip" title="Editar" (click)="openEdit(row)">
-						<i class="ri-edit-2-fill text-warning"></i>
-					</button>
-
-					<button type="button" class="btn" data-bs-toggle="tooltip" title="Deletar" (click)="openEdit(row)">
-						<i class="ri-delete-bin-5-fill text-danger"></i>
-					</button>
-				</ng-template>
-			</ngx-datatable-column>
-		</ngx-datatable>
+	<div class="row">
+	  <div class="col-md-3 mx-auto my-5" *ngFor="let card of cards">
+		<div class="card" style="width: 18rem; height: 550px;">
+			<img class="card-img-top" [src]="card.image" alt="Card image cap">
+			<div class="card-body">
+			  <h5 class="card-title">{{ card.title }}</h5>
+			  <p class="card-text">{{ card.text }}</p>
+			  <a href="#" class="btn btn-primary">Saiba Mais</a>
+			</div>
+		  </div>
+	  </div>
 	</div>
-</div>
+  </div>
