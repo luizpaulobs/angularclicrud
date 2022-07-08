@@ -1,6 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { FormComponent } from './form/form.component';
+import { LuizService } from './service/luiz.service';
 
 @Component({
 	selector: 'app-luiz-table',
@@ -14,9 +15,13 @@ export class LuizTableComponent implements OnInit {
 	
 	public modalRef: BsModalRef;
 
-	constructor(private modalService: BsModalService) { }
+	constructor(private modalService: BsModalService, private luizService: LuizService, private cdr: ChangeDetectorRef) { }
 
 	ngOnInit(): void {
+		this.luizService.getLuizTable().subscribe(res => {
+			this.data = res;
+			this.cdr.detectChanges();
+		})
 	}
 
 	openForm() {

@@ -20,6 +20,9 @@ import { GeneralTableService } from './shared/services/general-table.service';
 import { LuizTableComponent } from './components/luiz-table/luiz-table.component';
 import { RobTableComponent } from './components/rob-table/rob-table.component';
 import { FormComponent } from './components/luiz-table/form/form.component';
+import { HttpClientModule } from '@angular/common/http';
+import { GeneralService } from './components/general-table/service/general.service';
+import { LuizService } from './components/luiz-table/service/luiz.service';
 
 @NgModule({
   declarations: [
@@ -43,8 +46,9 @@ import { FormComponent } from './components/luiz-table/form/form.component';
 		AlertModule.forRoot(),
 		ModalModule.forRoot(),
 		NgxDatatableModule,
+    HttpClientModule
   ],
-  providers: [AuthService, AuthGuard, GeneralTableService],
+  providers: [AuthService, AuthGuard, GeneralTableService, GeneralService, LuizService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

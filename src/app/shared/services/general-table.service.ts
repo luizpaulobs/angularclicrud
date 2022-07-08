@@ -1,25 +1,19 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http"
+import { environment } from "src/environments/environment";
 
 @Injectable({
 	providedIn: 'root'
 })
 export class GeneralTableService {
 
-	public row = [
-		{id: '1', name: 'Teste', origem: 'Salário', valor: 1524.42},
-		{id: '1', name: 'Teste', origem: 'Salário', valor: 1524.42},
-		{id: '1', name: 'Teste', origem: 'Salário', valor: 1524.42},
-		{id: '1', name: 'Teste', origem: 'Salário', valor: 1524.42},
-		{id: '1', name: 'Teste', origem: 'Salário', valor: 1524.42},
-		{id: '1', name: 'Teste', origem: 'Salário', valor: 1524.42},
-		{id: '1', name: 'Teste', origem: 'Salário', valor: 1524.42},
-		{id: '1', name: 'Teste', origem: 'Salário', valor: 1524.42}
-	]
-
-	constructor() {}
-
-	getGeneralTable(): Observable<any> {  
-		return new Observable(Subscriber => Subscriber.next(this.row))
+	constructor(private httpClient: HttpClient) {
+	
 	}
+
+	get(url: string): Observable<any[]> {  
+		return this.httpClient.get<any[]>(`${environment.baseUrl}/${url}`);
+	}
+
 }
