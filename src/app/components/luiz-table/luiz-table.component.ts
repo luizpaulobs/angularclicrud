@@ -1,5 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { Observable, ReplaySubject, Subject, takeUntil, timeout } from 'rxjs';
+import { GeneralModel } from '../model/general.model';
 import { FormComponent } from './form/form.component';
 import { LuizService } from './service/luiz.service';
 
@@ -7,37 +9,65 @@ import { LuizService } from './service/luiz.service';
 	selector: 'app-luiz-table',
 	templateUrl: './luiz-table.component.html',
 	styleUrls: ['./luiz-table.component.scss'],
-	changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.Default
 })
-export class LuizTableComponent implements OnInit {
+export class LuizTableComponent implements OnInit, OnDestroy {
 
-	public data = [{ id: '1', name: 'Teste', origem: 'Salário', valor: 1524.42 },];
+	public data: GeneralModel[] = [];
 	
 	public modalRef: BsModalRef;
 
-	constructor(private modalService: BsModalService, private luizService: LuizService, private cdr: ChangeDetectorRef) { }
+	private destroyed: ReplaySubject<boolean> = new ReplaySubject(1);
 
+	constructor(private modalService: BsModalService, private luizService: LuizService, private cdr: ChangeDetectorRef) { }
+	
 	ngOnInit(): void {
-		this.luizService.getLuizTable().subscribe(res => {
-			this.data = res;
-			this.cdr.detectChanges();
+		this.getData();
+	}
+
+	getData() {
+		this.luizService.getLuizTable()
+			.pipe(takeUntil(this.destroyed))
+			.subscribe((res: GeneralModel[]) => {
+				this.data = res;
+				this.cdr.detectChanges();
 		})
+	}
+
+	ngOnDestroy(): void {
+		this.destroyed.next(true);
+		this.destroyed.complete();
 	}
 
 	openForm() {
 		this.modalRef = this.modalService.show(FormComponent, { ignoreBackdropClick: true });
+		
+		this.refreshData();
 	}
 
 	openEdit(row: any) {
 		const initialState = {
-			data: row
+			data: row,
+			title: "Editar"
 		}
 		
 		this.modalRef = this.modalService.show(FormComponent, { ignoreBackdropClick: true, initialState: initialState });
+		
+		this.refreshData();
 	}
 
 	delete(row: any) {
-		console.log(row);
+		this.luizService.deleteLuizTable(row.id);
+		this.getData();
+	}
+
+	refreshData() {
+		this.modalRef.content.onClose = new Subject<boolean>();
+		this.modalRef.content.onClose.pipe(takeUntil(this.destroyed)).subscribe((result: any) => {
+			if(result) {
+				this.getData();
+			}
+		 })
 	}
 
 }
