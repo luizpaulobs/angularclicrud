@@ -3,7 +3,7 @@
 		<h4 class="title">{{title}}</h4>
 	</div>
 
-	<form class="p-3">
+	<form class="p-3" [formGroup]="form" (ngSubmit)="save()">
 		<div class="row">
 			<div class="col-12">
 				<div class="form-group">
@@ -28,7 +28,7 @@
 
 			<div class="mt-4 modal-footer">
 				<button type="button" data-dismiss="modal" class="btn btn-danger float-end mx-2" (click)="closeModal()">Cancelar</button>
-				<button type="submit" class="btn btn-success float-end">Cadastrar</button>
+				<button type="submit" class="btn btn-success float-end" [disabled]="!form.invalid">Cadastrar</button>
 			</div>
 		</div>
 	</form>

@@ -23,6 +23,7 @@ import { FormComponent } from './components/luiz-table/form/form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GeneralService } from './components/general-table/service/general.service';
 import { LuizService } from './components/luiz-table/service/luiz.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { LuizService } from './components/luiz-table/service/luiz.service';
 		AlertModule.forRoot(),
 		ModalModule.forRoot(),
 		NgxDatatableModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService, AuthGuard, GeneralTableService, GeneralService, LuizService],
   bootstrap: [AppComponent]
