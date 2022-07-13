@@ -70,4 +70,12 @@ export class LuizTableComponent implements OnInit, OnDestroy {
 		 })
 	}
 
+	soma(value: any) {
+		return `<strong>Total: R$ ${value.reduce((accumulator: number, curr: number) => accumulator + curr)}<strong>`;
+	}
+
+	nada(value: any) {
+		return null
+	}
+
 }

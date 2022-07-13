@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +24,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { GeneralService } from './components/general-table/service/general.service';
 import { LuizService } from './components/luiz-table/service/luiz.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import localePt from '@angular/common/locales/pt';
+import {registerLocaleData} from '@angular/common';
+
+registerLocaleData(localePt, 'pt');
+
 
 @NgModule({
   declarations: [
@@ -50,7 +55,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService, AuthGuard, GeneralTableService, GeneralService, LuizService],
+  providers: [AuthService, AuthGuard, GeneralTableService, GeneralService, LuizService, {provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

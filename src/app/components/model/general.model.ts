@@ -7,4 +7,5 @@ export class GeneralModel {
     name: string = "";
     origem: string = "";
     valor: number | null = null;
+    date: string = (new Date()).toLocaleDateString().split('/').reverse().join('-');
 }

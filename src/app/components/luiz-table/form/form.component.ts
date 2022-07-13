@@ -21,13 +21,12 @@ export class FormComponent implements OnInit {
   constructor(private modalRef: BsModalRef, private fb: FormBuilder, private luizService: LuizService) { }
 
   ngOnInit(): void {
-		console.log(this.data, this.title);
     if(this.data?.id) {
       this.form = this.fb.group(new GeneralModel(this.data));
     } else {
-      this.form = this.fb.group(new GeneralModel());
+      this.form = this.fb.group(new GeneralModel({name: "Luiz"}));
     }
-		
+    
   }
 
 	closeModal() {
