@@ -6,7 +6,7 @@
 		</div>
 		<hr>
 
-		<ngx-datatable [rows]="data" class="material" [scrollbarH]="true" columnMode="force" [summaryPosition]="'bottom'" [summaryRow]="true" > 
+		<ngx-datatable [rows]="data" class="material" (sort)="onSort($event)" [sorts]="[{prop: 'date', dir: 'asc'}]" [scrollbarH]="true" columnMode="force" [summaryPosition]="'bottom'" [summaryRow]="true" > 
 
 			<ngx-datatable-column name="id" [summaryFunc]="nada">
 				<ng-template let-column="column" ngx-datatable-header-template>Id</ng-template>

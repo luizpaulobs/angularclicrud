@@ -36,7 +36,7 @@ export class LuizTableComponent implements OnInit, OnDestroy {
 			.pipe(takeUntil(this.destroy))
 			.subscribe((res: GeneralModel[]) => {
 				this.data = res;
-				console.log('Foi');
+				console.log(this.data);
 				
 				this.cdr.detectChanges();
 		})
@@ -87,6 +87,10 @@ export class LuizTableComponent implements OnInit, OnDestroy {
 			}
 		 })
 	}
+
+	onSort(event: any){
+		console.log(event);
+	  }
 
 	soma(value: any) {
 		return `<strong>Total: R$ ${value.reduce((accumulator: number, curr: number) => accumulator + curr)}<strong>`;

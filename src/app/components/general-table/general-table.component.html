@@ -3,9 +3,9 @@
 		<h4>Tabela Geral</h4>
 		<hr>
 		
-		<ngx-datatable [rows]="data" class="material" [scrollbarH]="true" columnMode="force" >
+		<ngx-datatable [rows]="data" [sorts]="[{prop: 'date', dir: 'asc'}]" class="material" [scrollbarH]="true" columnMode="force" [summaryPosition]="'bottom'" [summaryRow]="true">
 	
-			<ngx-datatable-column name="id">
+			<ngx-datatable-column name="id" [summaryFunc]="nada">
 				<ng-template let-column="column" ngx-datatable-header-template>Id</ng-template>
 				<ng-template let-value="value" ngx-datatable-cell-template>
 					<strong>{{ value }}</strong>
@@ -18,6 +18,13 @@
 					<strong>{{ value }}</strong>
 				</ng-template>
 			</ngx-datatable-column>
+
+			<ngx-datatable-column name="date">
+				<ng-template let-column="column" ngx-datatable-header-template>Data</ng-template>
+				<ng-template let-value="value" ngx-datatable-cell-template>
+					<strong>{{ value | date: "shortDate" }}</strong>
+				</ng-template>
+			</ngx-datatable-column>
 	
 			<ngx-datatable-column name="origem">
 				<ng-template let-column="column" ngx-datatable-header-template>Origem</ng-template>
@@ -26,10 +33,10 @@
 				</ng-template>
 			</ngx-datatable-column>
 	
-			<ngx-datatable-column name="valor">
+			<ngx-datatable-column name="valor" [summaryFunc]="soma">
 				<ng-template let-column="column" ngx-datatable-header-template>Valor</ng-template>
 				<ng-template let-value="value" ngx-datatable-cell-template>
-					<strong>{{ value }}</strong>
+					<strong>{{ value | currency: "BRL" }}</strong>
 				</ng-template>
 			</ngx-datatable-column>
 		</ngx-datatable>

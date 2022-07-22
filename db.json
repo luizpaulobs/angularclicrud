@@ -77,13 +77,6 @@
       "origem": "Salario",
       "valor": 1200,
       "date": "2022-07-05"
-    },
-    {
-      "id": 5,
-      "name": "Luiz",
-      "origem": "salario",
-      "valor": 1200,
-      "date": "2022-08-05"
     }
   ],
   "roberta": [
