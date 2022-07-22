@@ -12,7 +12,7 @@ export class GeneralTableService {
 	
 	}
 
-	get(url: string): Observable<any[]> {  
+	get(url: string) {  
 		return this.httpClient.get<any[]>(`${environment.baseUrl}/${url}`);
 	}
 

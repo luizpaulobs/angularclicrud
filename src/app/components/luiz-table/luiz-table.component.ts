@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Observable, ReplaySubject, Subject, takeUntil, timeout } from 'rxjs';
+import { ReplaySubject, Subject, take, takeUntil } from 'rxjs';
+import { ConfirmDeleteComponent } from 'src/app/shared/components/confirm-delete/confirm-delete.component';
 import { GeneralModel } from '../model/general.model';
 import { FormComponent } from './form/form.component';
 import { LuizService } from './service/luiz.service';
@@ -17,7 +18,7 @@ export class LuizTableComponent implements OnInit, OnDestroy {
 	
 	public modalRef: BsModalRef;
 
-	private destroyed: ReplaySubject<boolean> = new ReplaySubject(1);
+	private destroy: ReplaySubject<boolean> = new ReplaySubject(1);
 
 	constructor(private modalService: BsModalService, private luizService: LuizService, private cdr: ChangeDetectorRef) { }
 	
@@ -27,21 +28,23 @@ export class LuizTableComponent implements OnInit, OnDestroy {
 
 	getData() {
 		this.luizService.getLuizTable()
-			.pipe(takeUntil(this.destroyed))
+			.pipe(takeUntil(this.destroy))
 			.subscribe((res: GeneralModel[]) => {
 				this.data = res;
+				console.log('Foi');
+				
 				this.cdr.detectChanges();
 		})
 	}
 
 	ngOnDestroy(): void {
-		this.destroyed.next(true);
-		this.destroyed.complete();
+		this.destroy.next(true);
+		this.destroy.complete();
 	}
 
 	openForm() {
 		this.modalRef = this.modalService.show(FormComponent, { ignoreBackdropClick: true });
-		
+
 		this.refreshData();
 	}
 
@@ -57,15 +60,30 @@ export class LuizTableComponent implements OnInit, OnDestroy {
 	}
 
 	delete(row: any) {
-		this.luizService.deleteLuizTable(row.id);
-		this.getData();
+		const initialState = {
+			id: row.id
+		}
+
+		this.modalRef = this.modalService.show(ConfirmDeleteComponent, {ignoreBackdropClick: true, initialState: initialState});
+		
+		this.modalRef.content.onClose = new Subject<boolean>();
+		this.modalRef.content.onClose.pipe(take(1)).subscribe((result: any) => {	
+			if(result) {
+				this.luizService.deleteLuizTable(row.id);
+				setTimeout(() => {
+					this.getData();
+				}, 500);
+			}
+		 })
 	}
 
 	refreshData() {
 		this.modalRef.content.onClose = new Subject<boolean>();
-		this.modalRef.content.onClose.pipe(takeUntil(this.destroyed)).subscribe((result: any) => {
+		this.modalRef.content.onClose.pipe(take(1)).subscribe((result: any) => {	
 			if(result) {
-				this.getData();
+				setTimeout(() => {
+					this.getData();
+				}, 500);
 			}
 		 })
 	}

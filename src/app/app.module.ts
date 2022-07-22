@@ -26,6 +26,7 @@ import { LuizService } from './components/luiz-table/service/luiz.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import localePt from '@angular/common/locales/pt';
 import {registerLocaleData} from '@angular/common';
+import { ConfirmDeleteComponent } from './shared/components/confirm-delete/confirm-delete.component';
 
 registerLocaleData(localePt, 'pt');
 
@@ -41,7 +42,8 @@ registerLocaleData(localePt, 'pt');
     FooterComponent,
     LuizTableComponent,
     RobTableComponent,
-    FormComponent
+    FormComponent,
+    ConfirmDeleteComponent
   ],
   imports: [
     BrowserModule,

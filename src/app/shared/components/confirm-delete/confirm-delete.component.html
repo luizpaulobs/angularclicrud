@@ -1,0 +1,13 @@
+<div class="card">
+    <div class="header">
+        <h4 class="title">Deletar</h4>
+    </div>
+
+    <h5 class="mt-4 p-1">Deseja deletar o item <strong>{{ id }}</strong>?</h5>
+    
+    <div class="d-flex mt-3 p-1">
+        <p class="me-auto"></p>
+        <button class="btn btn-danger" (click)="cancel()">Cancelar</button>
+        <button class="btn btn-success ms-2" (click)="confirm()">Confirmar</button>
+    </div>
+</div>
