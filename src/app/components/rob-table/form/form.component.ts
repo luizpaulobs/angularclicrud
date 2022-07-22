@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { GeneralModel } from '../../model/general.model';
-import { LuizService } from '../service/luiz.service';
+import { RobService } from '../service/rob.service';
 
 @Component({
   selector: 'app-form',
@@ -10,20 +10,20 @@ import { LuizService } from '../service/luiz.service';
   styleUrls: ['./form.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default
 })
-export class FormLuizComponent implements OnInit {
+export class FormRobComponent implements OnInit {
 
-	@Input() title = "Novo";
+  @Input() title = "Novo";
 	@Input() data: GeneralModel;
 
   public form: FormGroup;
 
-  constructor(private modalRef: BsModalRef, private fb: FormBuilder, private luizService: LuizService) { }
+  constructor(private modalRef: BsModalRef, private fb: FormBuilder, private robService: RobService) { }
 
   ngOnInit(): void {
     if(this.data?.id) {
       this.form = this.fb.group(new GeneralModel(this.data));
     } else {
-      this.form = this.fb.group(new GeneralModel({name: "Luiz"}));
+      this.form = this.fb.group(new GeneralModel({name: "Roberta"}));
     }
     
   }
@@ -38,9 +38,9 @@ export class FormLuizComponent implements OnInit {
     }
 
     if(this.data?.id) {
-      this.luizService.editLuizTable(this.form.value)
+      this.robService.editRobTable(this.form.value)
     } else {
-      this.luizService.addLuizTable(this.form.value);
+      this.robService.addRobTable(this.form.value);
     }
     this.modalRef.content.onClose.next(true);
 

@@ -19,7 +19,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { GeneralTableService } from './shared/services/general-table.service';
 import { LuizTableComponent } from './components/luiz-table/luiz-table.component';
 import { RobTableComponent } from './components/rob-table/rob-table.component';
-import { FormComponent } from './components/luiz-table/form/form.component';
+import { FormLuizComponent } from './components/luiz-table/form/form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GeneralService } from './components/general-table/service/general.service';
 import { LuizService } from './components/luiz-table/service/luiz.service';
@@ -27,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import localePt from '@angular/common/locales/pt';
 import {registerLocaleData} from '@angular/common';
 import { ConfirmDeleteComponent } from './shared/components/confirm-delete/confirm-delete.component';
+import { FormRobComponent } from './components/rob-table/form/form.component';
 
 registerLocaleData(localePt, 'pt');
 
@@ -42,8 +43,9 @@ registerLocaleData(localePt, 'pt');
     FooterComponent,
     LuizTableComponent,
     RobTableComponent,
-    FormComponent,
-    ConfirmDeleteComponent
+    FormLuizComponent,
+    ConfirmDeleteComponent,
+    FormRobComponent
   ],
   imports: [
     BrowserModule,

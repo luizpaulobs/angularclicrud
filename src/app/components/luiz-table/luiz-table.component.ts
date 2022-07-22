@@ -3,7 +3,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ReplaySubject, Subject, take, takeUntil } from 'rxjs';
 import { ConfirmDeleteComponent } from 'src/app/shared/components/confirm-delete/confirm-delete.component';
 import { GeneralModel } from '../model/general.model';
-import { FormComponent } from './form/form.component';
+import { FormLuizComponent } from './form/form.component';
 import { LuizService } from './service/luiz.service';
 
 @Component({
@@ -25,6 +25,11 @@ export class LuizTableComponent implements OnInit, OnDestroy {
 	ngOnInit(): void {
 		this.getData();
 	}
+	
+	ngOnDestroy(): void {
+		this.destroy.next(true);
+		this.destroy.complete();
+	}
 
 	getData() {
 		this.luizService.getLuizTable()
@@ -37,13 +42,8 @@ export class LuizTableComponent implements OnInit, OnDestroy {
 		})
 	}
 
-	ngOnDestroy(): void {
-		this.destroy.next(true);
-		this.destroy.complete();
-	}
-
 	openForm() {
-		this.modalRef = this.modalService.show(FormComponent, { ignoreBackdropClick: true });
+		this.modalRef = this.modalService.show(FormLuizComponent, { ignoreBackdropClick: true });
 
 		this.refreshData();
 	}
@@ -54,7 +54,7 @@ export class LuizTableComponent implements OnInit, OnDestroy {
 			title: "Editar"
 		}
 		
-		this.modalRef = this.modalService.show(FormComponent, { ignoreBackdropClick: true, initialState: initialState });
+		this.modalRef = this.modalService.show(FormLuizComponent, { ignoreBackdropClick: true, initialState: initialState });
 		
 		this.refreshData();
 	}

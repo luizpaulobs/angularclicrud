@@ -1,0 +1,42 @@
+<div class="card">
+	<div class="header">
+		<h4 class="title">{{title}}</h4>
+	</div>
+
+	<form class="p-3" [formGroup]="form" (ngSubmit)="save()">
+		<div class="row">
+			<div class="col-12">
+				<div class="form-group">
+					<label>Nome</label>
+					<input formControlName="name" name="name" type="text" class="form-control" placeholder="Nome" required>
+				</div>
+			</div>
+
+			<div class="col-12">
+				<div class="form-group">
+					<label>Data</label>
+					<input formControlName="date" name="date" type="date" class="form-control" placeholder="Data" required>
+				</div>
+			</div>
+
+			<div class="col-12">
+				<div class="form-group">
+					<label>Origem</label>
+					<input formControlName="origem" name="origem" type="text" class="form-control" placeholder="Origem" required>
+				</div>
+			</div>
+
+			<div class="col-12">
+				<div class="form-group">
+					<label>Valor</label>
+					<input formControlName="valor" name="valor" type="number" class="form-control" placeholder="Valor" required>
+				</div>
+			</div>
+
+			<div class="mt-4 modal-footer">
+				<button type="button" data-dismiss="modal" class="btn btn-danger float-end mx-2" (click)="closeModal()">Cancelar</button>
+				<button type="submit" class="btn btn-success float-end" [disabled]="form.invalid">Cadastrar</button>
+			</div>
+		</div>
+	</form>
+</div>
