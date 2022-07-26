@@ -1,10 +1,15 @@
 .sidebar {
-	background-color: black;
+	background-color: rgba(0, 0, 0, 0);
 	color: white;
 	height: 100%;
 	display: flex;
 	padding: 1rem;
 	//width: max-content;
 	//justify-content: center;
+}
+
+hr {
+	color: white !important;
+	background-color: white !important;
 }
 
